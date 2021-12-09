@@ -52,7 +52,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         focusBorderColor="white"
         variant="filled"
         _placeholder={{
-          color: '#F05B91',
+          color: '#090909',
         }}
         _focus={{
           bgColor: 'white',
@@ -62,7 +62,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
       />
 
       {!!error && (
-        <Flex mt="0.3rem" mb="0.5rem">
+        <Flex mt="1rem" mb="0.5rem">
           <WarningIcon h={4} w={4} color="white" mr="0.5rem" />
           <Text fontWeight="300" color="white" fontSize="14px">
             {' '}
