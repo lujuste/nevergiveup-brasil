@@ -10,7 +10,13 @@ export default function MiniFooter() {
       h="100%"
       py="2rem"
     >
-      <Text fontSize="16px" fontFamily="Roboto" mx="auto">
+      <Text
+        textAlign="center"
+        fontSize={['14px', '14px', '16px']}
+        fontFamily="Roboto"
+        mx="auto"
+        mt={['-3rem', '-3rem', '-2rem']}
+      >
         Copyright © 2021 Luana Tavares. Todos os direitos reservados.
       </Text>
     </Flex>

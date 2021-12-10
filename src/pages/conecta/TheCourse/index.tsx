@@ -5,14 +5,24 @@ import {
   List,
   ListItem,
   ListIcon,
+  useBreakpointValue,
+  Icon,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import logoNew from '../../../../public/images/ConectaNovoLogo.svg';
 import { useForm } from 'react-hook-form';
 
-import { TriangleUpIcon } from '@chakra-ui/icons';
+import { TriangleUpIcon, QuestionIcon } from '@chakra-ui/icons';
 
 export default function TheCourse() {
+  const isMobile = useBreakpointValue({
+    base: true,
+    sm: true,
+    md: false,
+    lg: false,
+    xl: false,
+  });
+
   return (
     <Flex
       pb="5rem"
@@ -38,18 +48,20 @@ export default function TheCourse() {
           align="center"
           justify="center"
         >
-          <Image width={249} height={249} src={logoNew} />
+          {!isMobile && <Image width={249} height={249} src={logoNew} />}
           <Heading
-            fontSize="64px"
+            fontSize={['30px', '30px', '42px', '50px', '62px']}
             color="#912B78"
             fontWeight="700"
             fontFamily="Public Sans"
             textAlign="center"
             maxW="600px"
+            mb={['2rem', '2rem', '0', '0']}
+            mt={['2rem', '2rem', '0', '0']}
           >
             Curso de liderança
             <Text mx="auto" color="#340B77">
-              política da conecta
+              política da Conecta
             </Text>
           </Heading>
         </Flex>
@@ -60,6 +72,7 @@ export default function TheCourse() {
           fontFamily="Roboto"
           lineHeight="35px"
           textAlign="justify"
+          overflowWrap="break-word"
         >
           A democracia só será realmente forte no momento em que nos vermos
           representados nela - homens, mulheres, negras, negros, ricos, pobres,
@@ -93,7 +106,7 @@ export default function TheCourse() {
         <List mt="3rem" spacing={3}>
           <ListItem
             color="#666666"
-            fontSize="20px"
+            fontSize="18px"
             fontWeight="400"
             fontFamily="Roboto"
             lineHeight="35px"
@@ -108,68 +121,71 @@ export default function TheCourse() {
           </ListItem>
           <ListItem
             color="#666666"
-            fontSize="20px"
             fontWeight="400"
             fontFamily="Roboto"
             lineHeight="35px"
-            textAlign="justify"
+            fontSize="18px"
           >
             <ListIcon
               transform="rotate(90deg)"
               as={TriangleUpIcon}
               color="#340B77"
             />
-            que já tenham ou não participado de eleições
+            Que já tenham ou não participado de eleições
           </ListItem>
           <ListItem
             color="#666666"
-            fontSize="20px"
+            fontSize="18px"
             fontWeight="400"
             fontFamily="Roboto"
             lineHeight="35px"
-            textAlign="justify"
           >
             <ListIcon
               transform="rotate(90deg)"
               as={TriangleUpIcon}
               color="#340B77"
             />
-            que sejam dirigentes ou coordenadoras de movimentos sociais ou
+            Que sejam dirigentes ou coordenadoras de movimentos sociais ou
             comunitários
           </ListItem>
           {/* You can also use custom icons from react-icons */}
           <ListItem
             color="#666666"
-            fontSize="20px"
+            fontSize="18px"
             fontWeight="400"
             fontFamily="Roboto"
             lineHeight="35px"
-            textAlign="justify"
           >
             <ListIcon
               transform="rotate(90deg)"
               as={TriangleUpIcon}
               color="#340B77"
             />
-            o critério de diversidade regional e racial terão peso na seleção de
+            O critério de diversidade regional e racial terão peso na seleção de
             mulheres
           </ListItem>
         </List>
-        <Text
-          color="#666666"
-          fontSize="20px"
-          fontWeight="400"
-          fontFamily="Roboto"
-          lineHeight="35px"
-          mt="3rem"
-          textAlign="justify"
-        >
-          A primeira turma contará com 150 vagas. Caso queira participar,
-          preencha o formulário abaixo e aguarde a conclusão do processo de
-          seleção até 11/01 por e-mail. Vamos acelerar a representatividade da
-          mulher nos espaços de poder! Esperamos por você!!!
-        </Text>
       </Flex>
+      <Text
+        color="#666666"
+        fontSize="18px"
+        fontWeight="400"
+        fontFamily="Roboto"
+        lineHeight="35px"
+        mt="3rem"
+        overflowWrap="break-word"
+        textAlign="justify"
+        maxW={['300px', '300px', '600px', '900px', '1300px']}
+        mx="auto"
+        border="1px solid #340B77"
+        borderRadius="10px"
+        p="1rem"
+      >
+        <Icon as={QuestionIcon} /> A primeira turma contará com 150 vagas. Caso
+        queira participar, preencha o formulário abaixo e aguarde a conclusão do
+        processo de seleção até 11/01 por e-mail. Vamos acelerar a
+        representatividade da mulher nos espaços de poder! Esperamos por você!!!
+      </Text>
     </Flex>
   );
 }

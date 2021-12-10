@@ -14,8 +14,10 @@ import {
   useDisclosure,
   ModalCloseButton,
   Spinner,
+  Select,
   Icon,
   Text,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import { FieldError } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
@@ -34,6 +36,13 @@ interface InputProps {
 }
 
 export default function FormArea() {
+  const isMobile = useBreakpointValue({
+    base: true,
+    sm: true,
+    md: false,
+    xl: false,
+  });
+
   function toastSucess() {
     toast.success('Sucesso! Obrigado pelo contato.', {
       position: toast.POSITION.BOTTOM_CENTER,
@@ -61,8 +70,11 @@ export default function FormArea() {
       .date()
       .required('Data de nascimento obrigatória')
       .typeError('Insira uma data'),
-    estado: yup.string().required('Seu estado é obrigatório'),
+    cidade: yup.string().required('Seu estado é obrigatório'),
     bairro: yup.string().required('Seu estado é obrigatório'),
+    instagram: yup.string(),
+    eleicoes: yup.string(),
+    anodisputado: yup.string(),
   });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -74,6 +86,7 @@ export default function FormArea() {
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const onSubmit: SubmitHandler<InputProps> = async data => {
+    console.log(data);
     try {
       setLoading(true);
       await fetch('/api/getUsers', {
@@ -117,22 +130,42 @@ export default function FormArea() {
         sx={{
           filter: 'blur',
         }}
-        borderRadius="28px"
+        borderRadius={['0', '0', '28px']}
         flexDir="column"
         boxShadow="dark-lg"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <Heading
-          color="white"
-          fontFamily="Public Sans"
-          fontSize="60px"
-          mt="5rem"
-          mx="auto"
-        >
-          Inscreva-se!
-        </Heading>
+        {isMobile ? (
+          <Heading mt="2rem" color="white" mx="auto">
+            Inscreva-se!
+          </Heading>
+        ) : (
+          <Heading
+            color="white"
+            fontFamily="Public Sans"
+            fontSize={['32px', '32px', '50px', '60px']}
+            mt={['2rem', '2rem', '5rem']}
+            mx="auto"
+            maxW="600px"
+          >
+            Inscreva-se!
+          </Heading>
+        )}
 
-        <Grid mt="2rem" px="2rem" templateColumns="repeat(2, 1fr)" gap={7}>
+        <Text mt="2rem" color="white" ml="3rem">
+          Dados cadastrais:
+        </Text>
+
+        <Grid
+          mt="2rem"
+          px="2rem"
+          templateColumns={[
+            'repeat(1, 1fr)',
+            'repeat(2, 1fr)',
+            'repeat(2, 1fr)',
+          ]}
+          gap={7}
+        >
           <GridItem>
             <Input
               name="name"
@@ -172,19 +205,18 @@ export default function FormArea() {
           <GridItem>
             <Input
               name="date"
-              textColor="#fff"
-              label="Sua data de nascimento"
-              error={errors.date}
+              label="Data de nascimento"
               {...register('date')}
+              error={errors.date}
               _hover={{ bgColor: 'white' }}
             />
           </GridItem>
           <GridItem>
             <Input
               name="text"
-              {...register('estado')}
-              label="Seu estado"
-              error={errors.estado}
+              {...register('cidade')}
+              label="Sua cidade"
+              error={errors.cidade}
               _hover={{ bgColor: 'white' }}
             />
           </GridItem>
@@ -196,6 +228,151 @@ export default function FormArea() {
               error={errors.bairro}
               _hover={{ bgColor: 'white' }}
             />
+          </GridItem>
+          <GridItem>
+            <Input
+              name="text"
+              label="Seu instagram"
+              {...register('instagram')}
+              error={errors.instagram}
+              _hover={{ bgColor: 'white' }}
+            />
+          </GridItem>
+        </Grid>
+        <Text mt="2rem" color="white" ml="3rem">
+          Informações gerais:
+        </Text>
+        <Grid px="2rem" templateColumns="repeat(1, fr)" mt="1rem">
+          <GridItem mt="1rem">
+            <Select
+              name="eleicoes"
+              id="eleicoes"
+              color="black"
+              {...register('eleicoes')}
+              error={errors.eleicoes}
+              bgColor="white"
+              placeholder="Já disputou eleições?"
+            >
+              <option value="yes">Sim</option>
+              <option value="no">Não</option>
+            </Select>
+          </GridItem>
+          <GridItem>
+            <Input
+              mt="1rem"
+              name="text"
+              label="Se sim, qual ano?"
+              {...register('anodisputado')}
+              error={errors.anodisputado}
+              _hover={{ bgColor: 'white' }}
+            />
+          </GridItem>
+          <GridItem mt="1rem">
+            <Select
+              id="lider"
+              name="lider"
+              color="black"
+              bgColor="white"
+              placeholder="É lider comunitária ou dirigente?"
+              {...register('lider')}
+              error={errors.lider}
+            >
+              <option value="yes">Sim</option>
+              <option value="no">Não</option>
+            </Select>
+          </GridItem>
+          <GridItem>
+            <Input
+              mt="1rem"
+              name="text"
+              label="Se sim, qual organização?"
+              {...register('organization')}
+              error={errors.organization}
+              _hover={{ bgColor: 'white' }}
+            />
+          </GridItem>
+          <GridItem mt="1rem">
+            <Select
+              name="candidato"
+              id="candidato"
+              {...register('candidato')}
+              error={errors.candidato}
+              color="black"
+              bgColor="white"
+              placeholder="Pretende disputar as eleições?"
+            >
+              <option value="yes">Sim</option>
+              <option value="no">Não</option>
+            </Select>
+          </GridItem>
+          <GridItem>
+            <Input
+              mt="1rem"
+              name="text"
+              label="Se sim, qual cargo?"
+              {...register('cargo')}
+              error={errors.cargo}
+              _hover={{ bgColor: 'white' }}
+            />
+          </GridItem>
+          <GridItem mt="1rem">
+            <Select
+              name="filiada"
+              id="filiada"
+              {...register('filiada')}
+              error={errors.filiada}
+              color="black"
+              bgColor="white"
+              placeholder="É filiada a algum partido?"
+            >
+              <option value="yes">Sim</option>
+              <option value="no">Não</option>
+            </Select>
+          </GridItem>
+
+          <GridItem>
+            <Input
+              mt="1rem"
+              name="partido"
+              label="Se sim, qual partido?"
+              {...register('partido')}
+              error={errors.partido}
+              _hover={{ bgColor: 'white' }}
+            />
+          </GridItem>
+
+          <GridItem mt="1rem">
+            <Select
+              id="cor"
+              name="cor"
+              color="black"
+              bgColor="white"
+              placeholder="Considera-se:"
+              {...register('cor')}
+              error={errors.cor}
+            >
+              <option value="branca">Branca</option>
+              <option value="parda">Parda</option>
+              <option value="preta">Preta</option>
+              <option value="amarela">Amarela</option>
+              <option value="indígena">Indígena</option>
+            </Select>
+          </GridItem>
+
+          <GridItem mt="1rem">
+            <Select
+              id="genero"
+              name="genero"
+              color="black"
+              bgColor="white"
+              {...register('genero')}
+              error={errors.genero}
+              placeholder="Identidade de gênero:"
+            >
+              <option value="cisgenero">Cisgênero</option>
+              <option value="transgenero">Transgênero</option>
+              <option value="queer">Queer (não-binário)</option>
+            </Select>
           </GridItem>
         </Grid>
         <Button

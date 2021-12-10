@@ -44,7 +44,7 @@ export default function Conecta() {
         >
           <Text
             color="white"
-            fontSize="30px"
+            fontSize={['20px', '20px', '30px']}
             fontWeight="400"
             fontFamily="Public Sans"
             mx="auto"
@@ -52,7 +52,7 @@ export default function Conecta() {
             👋 Olá, seja bem vinda!{' '}
           </Text>
           <Heading
-            fontSize="64px"
+            fontSize={['32px', '32px', '42px', '64px']}
             fontWeight="600"
             color="white"
             fontFamily="Public Sans"
@@ -60,10 +60,12 @@ export default function Conecta() {
             maxW="700px"
             mx="auto"
             mt="2rem"
-            lineHeight="92px"
+            lineHeight={['45px', '45px', '70px', '80px', '92px']}
           >
             Lugar de mulher é onde ela quiser,{' '}
-            <Text bgColor="#912B78">inclusive na política!</Text>
+            <Text as="span" px={['0', '0', '2rem']} bgColor={['#912B78']}>
+              inclusive na política!
+            </Text>
           </Heading>
         </Flex>
       </Flex>
