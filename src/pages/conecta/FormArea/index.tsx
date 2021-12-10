@@ -23,7 +23,11 @@ import { FieldError } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { useState } from 'react';
 
-import { CheckCircleIcon } from '@chakra-ui/icons';
+import {
+  CheckCircleIcon,
+  ArrowRightIcon,
+  TriangleUpIcon,
+} from '@chakra-ui/icons';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
@@ -66,8 +70,8 @@ export default function FormArea() {
       .typeError('Deve ser um número')
       .required('Whatsapp é obrigatório.'),
     cpf: yup.string().required('CPF é obrigatório'),
-    date: yup
-      .date()
+    dateIsBorn: yup
+      .string()
       .required('Data de nascimento obrigatória')
       .typeError('Insira uma data'),
     cidade: yup.string().required('Seu estado é obrigatório'),
@@ -152,8 +156,9 @@ export default function FormArea() {
           </Heading>
         )}
 
-        <Text mt="2rem" color="white" ml="3rem">
-          Dados cadastrais:
+        <Text mt="2rem" color="white" ml="2.3rem">
+          <Icon transform="rotate(90deg)" as={TriangleUpIcon} /> Dados
+          cadastrais:
         </Text>
 
         <Grid
@@ -164,7 +169,7 @@ export default function FormArea() {
             'repeat(2, 1fr)',
             'repeat(2, 1fr)',
           ]}
-          gap={7}
+          gap={4}
         >
           <GridItem>
             <Input
@@ -204,10 +209,10 @@ export default function FormArea() {
           </GridItem>
           <GridItem>
             <Input
-              name="date"
+              name="text"
               label="Data de nascimento"
-              {...register('date')}
-              error={errors.date}
+              {...register('dateIsBorn')}
+              error={errors.dateIsBorn}
               _hover={{ bgColor: 'white' }}
             />
           </GridItem>
@@ -239,8 +244,9 @@ export default function FormArea() {
             />
           </GridItem>
         </Grid>
-        <Text mt="2rem" color="white" ml="3rem">
-          Informações gerais:
+        <Text mt="2rem" color="white" ml="2.3rem">
+          <Icon transform="rotate(90deg)" as={TriangleUpIcon} /> Informações
+          gerais:
         </Text>
         <Grid px="2rem" templateColumns="repeat(1, fr)" mt="1rem">
           <GridItem mt="1rem">

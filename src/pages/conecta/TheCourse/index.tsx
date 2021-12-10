@@ -67,11 +67,11 @@ export default function TheCourse() {
         </Flex>
         <Text
           color="#666666"
-          fontSize="20px"
+          fontSize={['15px', '15px', '16px', '18px']}
           fontWeight="400"
           fontFamily="Roboto"
           lineHeight="35px"
-          textAlign="justify"
+          textAlign={['left', 'left', 'justify']}
           overflowWrap="break-word"
         >
           A democracia só será realmente forte no momento em que nos vermos
@@ -106,11 +106,11 @@ export default function TheCourse() {
         <List mt="3rem" spacing={3}>
           <ListItem
             color="#666666"
-            fontSize="18px"
+            fontSize={['15px', '15px', '16px', '18px']}
             fontWeight="400"
             fontFamily="Roboto"
             lineHeight="35px"
-            textAlign="justify"
+            textAlign={['left', 'left', 'justify']}
           >
             <ListIcon
               transform="rotate(90deg)"
@@ -124,7 +124,7 @@ export default function TheCourse() {
             fontWeight="400"
             fontFamily="Roboto"
             lineHeight="35px"
-            fontSize="18px"
+            fontSize={['15px', '15px', '16px', '18px']}
           >
             <ListIcon
               transform="rotate(90deg)"
@@ -135,7 +135,7 @@ export default function TheCourse() {
           </ListItem>
           <ListItem
             color="#666666"
-            fontSize="18px"
+            fontSize={['15px', '15px', '16px', '18px']}
             fontWeight="400"
             fontFamily="Roboto"
             lineHeight="35px"
@@ -151,7 +151,7 @@ export default function TheCourse() {
           {/* You can also use custom icons from react-icons */}
           <ListItem
             color="#666666"
-            fontSize="18px"
+            fontSize={['15px', '15px', '16px', '18px']}
             fontWeight="400"
             fontFamily="Roboto"
             lineHeight="35px"
@@ -168,22 +168,22 @@ export default function TheCourse() {
       </Flex>
       <Text
         color="#666666"
-        fontSize="18px"
+        fontSize={['15px', '15px', '16px', '18px']}
         fontWeight="400"
         fontFamily="Roboto"
         lineHeight="35px"
         mt="3rem"
         overflowWrap="break-word"
-        textAlign="justify"
+        textAlign={['left', 'left', 'justify']}
         maxW={['300px', '300px', '600px', '900px', '1300px']}
         mx="auto"
         border="1px solid #340B77"
         borderRadius="10px"
         p="1rem"
       >
-        <Icon as={QuestionIcon} /> A primeira turma contará com 150 vagas. Caso
-        queira participar, preencha o formulário abaixo e aguarde a conclusão do
-        processo de seleção até 11/01 por e-mail. Vamos acelerar a
+        <Icon mr="0.5rem" as={QuestionIcon} /> A primeira turma contará com 150
+        vagas. Caso queira participar, preencha o formulário abaixo e aguarde a
+        conclusão do processo de seleção até 11/01 por e-mail. Vamos acelerar a
         representatividade da mulher nos espaços de poder! Esperamos por você!!!
       </Text>
     </Flex>
