@@ -31,6 +31,8 @@ export default async function GetUser(
         instagram: body.instagram,
         eleicoes: body.eleicoes,
         anodisputado: body.anodisputado,
+        cargodisputado: body.cargodisputado,
+        partidodisputado: body.partidodisputado,
         lider: body.lider,
         organization: body.organization,
         candidato: body.cadidato,

@@ -4,6 +4,7 @@ import conectaLogo from '../../../public/images/logoConecta.svg';
 import FormArea from './FormArea';
 import MiniFooter from './MiniFooter';
 import TheCourse from './TheCourse';
+import Reveal from 'react-reveal/Reveal';
 export default function Conecta() {
   return (
     <>
@@ -13,6 +14,7 @@ export default function Conecta() {
         h="15vh"
         justify="center"
         align="center"
+        className="headerTop"
       >
         <Image
           src={conectaLogo}
@@ -42,31 +44,36 @@ export default function Conecta() {
           h="auto"
           align="center"
         >
-          <Text
-            color="white"
-            fontSize={['20px', '20px', '30px']}
-            fontWeight="400"
-            fontFamily="Public Sans"
-            mx="auto"
-          >
-            👋 Olá, seja bem vinda!{' '}
-          </Text>
-          <Heading
-            fontSize={['32px', '32px', '42px', '64px']}
-            fontWeight="600"
-            color="white"
-            fontFamily="Public Sans"
-            textAlign="center"
-            maxW="700px"
-            mx="auto"
-            mt="2rem"
-            lineHeight={['45px', '45px', '70px', '80px', '92px']}
-          >
-            Lugar de mulher é onde ela quiser,{' '}
-            <Text as="span" px={['0', '0', '2rem']} bgColor={['#912B78']}>
-              inclusive na política!
+          <Reveal>
+            <Text
+              as="p"
+              color="white"
+              fontSize={['20px', '20px', '30px']}
+              fontWeight="400"
+              fontFamily="Public Sans"
+              mx="auto"
+            >
+              <span>👋 </span> Olá, seja bem vinda!{' '}
             </Text>
-          </Heading>
+          </Reveal>
+          <Reveal>
+            <Heading
+              fontSize={['32px', '32px', '42px', '64px']}
+              fontWeight="600"
+              color="white"
+              fontFamily="Public Sans"
+              textAlign="center"
+              maxW="700px"
+              mx="auto"
+              mt="2rem"
+              lineHeight={['45px', '45px', '70px', '80px', '92px']}
+            >
+              Lugar de mulher é onde ela quiser,{' '}
+              <Text as="span" px={['0', '0', '2rem']} bgColor={['#912B78']}>
+                inclusive na política!
+              </Text>
+            </Heading>
+          </Reveal>
         </Flex>
       </Flex>
       <TheCourse />

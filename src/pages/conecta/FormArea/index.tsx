@@ -23,6 +23,8 @@ import { FieldError } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { useState } from 'react';
 
+import Reveal from 'react-reveal/Reveal';
+
 import {
   CheckCircleIcon,
   ArrowRightIcon,
@@ -273,6 +275,26 @@ export default function FormArea() {
               _hover={{ bgColor: 'white' }}
             />
           </GridItem>
+          <GridItem>
+            <Input
+              mt="1rem"
+              name="cargodisputado"
+              label="Se sim, qual cargo?"
+              {...register('cargodisputado')}
+              error={errors.cargodisputado}
+              _hover={{ bgColor: 'white' }}
+            />
+          </GridItem>
+          <GridItem>
+            <Input
+              mt="1rem"
+              name="partido"
+              label="Se sim, qual partido?"
+              {...register('partidodisputado')}
+              error={errors.partidodisputado}
+              _hover={{ bgColor: 'white' }}
+            />
+          </GridItem>
           <GridItem mt="1rem">
             <Select
               id="lider"
@@ -415,7 +437,7 @@ export default function FormArea() {
             <ModalHeader
               fontFamily="Public Sans"
               fontSize="32px"
-              mt="5rem"
+              mt="3rem"
               mx="auto"
             >
               <Flex align="center" mt="-4rem" flexDir="column">
@@ -432,10 +454,25 @@ export default function FormArea() {
                 turma da <strong>CONECTA.</strong> Nosso time fará uma avaliação
                 dos critérios de participação e entrará em contato com você até
                 <strong>
-                  11/01/2022 para confirmar a sua participação.
+                  {' '}
+                  11/01/2022 para confirmar a sua participação. <br />
                 </strong>{' '}
-                Lugar de mulher é onde ela quiser,{' '}
-                <strong>inclusive na política!</strong>
+                <Text
+                  fontWeight="700"
+                  mx="auto"
+                  maxW="320px"
+                  fontFamily="Public Sans"
+                  mt="1rem"
+                  fontSize="20px"
+                >
+                  Lugar de mulher é onde ela quiser,{' '}
+                  <strong>
+                    {' '}
+                    <Text bgColor="#912B78" px="2" color="white" as="span">
+                      inclusive na política!
+                    </Text>{' '}
+                  </strong>
+                </Text>
               </Text>
             </ModalBody>
 
