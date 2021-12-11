@@ -18,7 +18,7 @@ span.wave {
   animation-iteration-count: infinite !important; /* Never stop waving :) */
   transform-origin: 70% 70% !important; /* Pivot around the bottom-left palm */
   display: inline-block !important;
-  margin-right: 0.5rem;
+  margin-right: 0.2rem;
 }
 
 @keyframes wave-animation {

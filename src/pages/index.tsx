@@ -52,7 +52,7 @@ const Home: NextPage = () => {
             fontFamily="Public Sans"
             mx="auto"
           >
-            <span className="wave">👋</span> {''} Olá, seja bem-vinda!{' '}
+            <span className="wave">👋</span> Olá, seja bem-vinda!{' '}
           </Text>
           <Heading
             fontSize={['28px', '32px', '42px', '64px']}
