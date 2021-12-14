@@ -53,7 +53,7 @@ export default function Conecta() {
               fontFamily="Public Sans"
               mx="auto"
             >
-              <span>👋 </span> Olá, seja bem vinda!{' '}
+              <span>👋 </span> Olá, seja bem vinda!{'  '}
             </Text>
           </Reveal>
           <Reveal>
