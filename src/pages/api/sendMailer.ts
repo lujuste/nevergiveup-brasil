@@ -4,7 +4,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 export default function sendMailer(req: NextApiRequest, res: NextApiResponse) {
   let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.USERMAIL,
       pass: process.env.PASSMAIL,
@@ -13,11 +14,19 @@ export default function sendMailer(req: NextApiRequest, res: NextApiResponse) {
 
   transporter
     .sendMail({
-      from: `${process.env.USERMAIL}`,
+      from: process.env.USERMAIL,
       to: req.body.email,
-      replyTo: process.env.PASSMAIL,
+      cc: 'lucianafeldman@gmail.com',
+      subject: 'Inscrição confirmada!!!!',
+      replyTo: process.env.USERMAIL,
       text: 'Participe do curso de mulheres na política!',
-      html: `<b> ${req.body.name} </b>`,
+      html: `<h1>Parabéns! Sua inscrição foi efetivada com sucesso!</h1> <p> Prezada ${req.body.name},<br/> Você concluiu a sua inscrição no processo de seleção da primeira
+      turma da <strong>CONECTA.</strong> <br/> Nosso time fará uma avaliação
+      dos critérios de participação e entrará em contato com você até
+      <strong>
+       
+        11/01/2022 para confirmar a sua participação. <br />
+      </strong> </p>`,
     })
     .then(response => {
       res.send(response);

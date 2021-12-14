@@ -93,6 +93,12 @@ export default function FormArea() {
 
   const onSubmit: SubmitHandler<InputProps> = async data => {
     console.log(data);
+
+    const senderMail = {
+      name: data.name,
+      email: data.email,
+    };
+
     try {
       setLoading(true);
       await fetch('/api/getUsers', {
@@ -109,6 +115,16 @@ export default function FormArea() {
           console.log(error);
           tostFailure();
         });
+
+      await fetch('/api/sendMailer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(senderMail),
+      })
+        .then(response => console.log(response))
+        .catch(error => console.log(error));
 
       setLoading(false);
     } catch (err) {

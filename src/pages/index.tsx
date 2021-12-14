@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import { Flex, Text, Heading } from '@chakra-ui/react';
 import Image from 'next/image';
 import Head from 'next/head';
-import conectaLogo from '../../public/images/logoConecta.svg';
+import conectaLogo from '../../public/images/conecta-trans.svg';
 import FormArea from '../pages/conecta/FormArea';
 import MiniFooter from '../pages/conecta/MiniFooter';
 import TheCourse from '../pages/conecta/TheCourse';
@@ -56,10 +56,11 @@ const Home: NextPage = () => {
           h="15vh"
           justify="center"
           align="center"
+          mx="auto"
         >
           <Image
             src={conectaLogo}
-            width={192}
+            width={292}
             height={108}
             quality={100}
             priority

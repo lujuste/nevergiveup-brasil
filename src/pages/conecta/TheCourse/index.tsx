@@ -9,7 +9,7 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import Image from 'next/image';
-import logoNew from '../../../../public/images/ConectaNovoLogo.svg';
+import logoNew from '../../../../public/images/conectaAzul.svg';
 import { useForm } from 'react-hook-form';
 import Reveal from 'react-reveal/Reveal';
 
@@ -91,7 +91,7 @@ export default function TheCourse() {
             <Text mt="3rem">
               {' '}
               A <strong>CONECTA</strong> é uma{' '}
-              <strong>ACELERADORA DE MULHERES NA POLÍTICA</strong> , que nasceu
+              <strong>ACELERADORA DE MULHERES NA POLÍTICA</strong>, que nasceu
               com a missão de contribuir para a redução do tempo para se atingir
               a igualdade feminina nos espaços de decisão pública. Uma
               iniciativa suprapartidária, criada a várias mãos com muito
@@ -201,7 +201,7 @@ export default function TheCourse() {
           <strong>150 vagas</strong>. Caso queira participar,{' '}
           <strong>preencha o formulário abaixo</strong> e aguarde a conclusão do
           processo de seleção <strong>até 11/01 </strong>por{' '}
-          <strong>e-mail</strong> .
+          <strong>e-mail</strong>.
         </Text>
       </Reveal>
       <Reveal>
