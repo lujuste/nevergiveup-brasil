@@ -18,6 +18,7 @@ import {
   Icon,
   Text,
   useBreakpointValue,
+  Checkbox,
 } from '@chakra-ui/react';
 import { FieldError } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
@@ -38,6 +39,7 @@ import { toast } from 'react-toastify';
 interface InputProps {
   name: string;
   email?: string;
+  lgpd: boolean;
   errors?: FieldError;
 }
 
@@ -61,6 +63,12 @@ export default function FormArea() {
     });
   }
 
+  function toastWarning() {
+    toast.warning('Você antes precisa autorizar o LGPD.', {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  }
+
   const [loading, setLoading] = useState(false);
   const [shouldOpen, setShouldOpen] = useState(false);
 
@@ -81,6 +89,7 @@ export default function FormArea() {
     instagram: yup.string(),
     eleicoes: yup.string(),
     anodisputado: yup.string(),
+    lgpd: yup.boolean(),
   });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -92,6 +101,11 @@ export default function FormArea() {
   } = useForm({ resolver: yupResolver(formSchema) });
 
   const onSubmit: SubmitHandler<InputProps> = async data => {
+    if (data.lgpd !== true) {
+      toastWarning();
+      return;
+    }
+
     console.log(data);
 
     const senderMail = {
@@ -109,7 +123,6 @@ export default function FormArea() {
         body: JSON.stringify(data),
       })
         .then(response => console.log(response))
-        .then(toastSucess)
         .then(onOpen)
         .catch(error => {
           console.log(error);
@@ -181,7 +194,7 @@ export default function FormArea() {
 
         <Grid
           mt="2rem"
-          px="2rem"
+          px={['2rem']}
           templateColumns={[
             'repeat(1, 1fr)',
             'repeat(2, 1fr)',
@@ -418,6 +431,12 @@ export default function FormArea() {
               <option value="queer">Queer (não-binário)</option>
             </Select>
           </GridItem>
+          <Checkbox {...register('lgpd')} mt={['0.5rem', '1rem', '2rem']}>
+            <Text mt={['1rem', '1rem', 0]} ml="0.1rem" color="white">
+              Ao informar meus dados, eu concordo com a Política de Privacidade
+              - LGPD.
+            </Text>
+          </Checkbox>
         </Grid>
         <Button
           mt="1.5rem"

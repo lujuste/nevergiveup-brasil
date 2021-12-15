@@ -31,7 +31,7 @@ export default async function sendMailer(
     </strong> </p>`,
   };
 
-  transporter.sendMail(mailOption, (err, data) => {
+ await transporter.sendMail(mailOption, (err, data) => {
     if (err) {
       console.log(err);
       res.send('error' + JSON.stringify(err));
